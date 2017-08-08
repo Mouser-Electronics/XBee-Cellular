@@ -3,7 +3,7 @@
 
 /*
       XBee LTE Cellular IoT Solution
-      Copyright (C) 2017  Joseph Downing, Mouser Electronics
+      Copyright (C) 2017  Mouser Electronics
 
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
