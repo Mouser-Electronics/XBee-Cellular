@@ -34,8 +34,6 @@
     #include <TH02_dev.h>
     #include <stdlib.h>
     #include <SoftwareSerial.h>
-    //#include <AltSoftSerial.h>
-    //#include <EnableInterrupt.h>
     
 
     #define sensor1 A0 // Ambient Light
@@ -46,8 +44,7 @@
     #define PIN_RX 2
     #define PIN_TX 3
 
-   SoftwareSerial monitorSerial = SoftwareSerial(PIN_TX, PIN_RX);
-   //AltSoftSerial monitorSerial;
+    SoftwareSerial monitorSerial = SoftwareSerial(PIN_TX, PIN_RX);
 
     String inputString = "";
     char input[2048];
@@ -78,16 +75,10 @@
     char ipCmd[] = "ATIP"; // IP protocol command (should read 1 for TCP)
     char aiCmd[] = "ATAI"; // Association Indication
     char apCmd[] = "ATAP"; // Verify API mode
-    char ciCmd[] = "ATCI"; // Connection indicator
-    char dlCmd[] = "ATDL"; //Configured Destination Address
-    char odCmd[] = "ATOD"; //Operating Destination Address
-    char anCmd[] = "ATAN";
-    char frCmd[] = "ATFR"; // Force Reset
     char cnCmd[] = "ATCN"; // Exit command
     char apRsp[] = "0"; // API disabled
     char chRsp[] = "OK"; // Command mode response
     char ipRsp[] = "1"; // IP protocol response
-    char ciRsp[] = "0"; // The socket is open
     char aiRsp[] = "0"; // Connected to the internet
 
 
@@ -240,9 +231,6 @@
       while(!SendATCommand(ipCmd, ipRsp));
       while(!SendATCommand(aiCmd, aiRsp));
       while(!SendATCommand(apCmd, apRsp));
-      //SendATCommand(ipCmd);
-      //SendATCommand(aiCmd);
-      //SendATCommand(apCmd);
       SendATCommand(cnCmd);
       monitorSerial.println("XBee module verified!");
       delay(10000);
@@ -327,7 +315,6 @@
           }else{
           input[cont] = inChar;
           cont++;
-          //monitorSerial.print(inChar);
           }
         }
         if(stringComplete) {
